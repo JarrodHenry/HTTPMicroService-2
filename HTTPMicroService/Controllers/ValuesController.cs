@@ -12,27 +12,23 @@ namespace HTTPMicroService.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public CCResponseModel Get()
         {
-            return new string[] { "value1", "value2" };
+            return new Models.CCResponseModel();
         }
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET api/values/5
+        //public CCResponseModel Get(CCRequestModel request)
+        //{
+        //    return new CCResponseModel();
+        //}
+
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public void Post([FromBody]CCRequestModel request)
         {
-            var postedObject = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(value);
+            
             var x = 1;
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
         }
 
         // DELETE api/values/5

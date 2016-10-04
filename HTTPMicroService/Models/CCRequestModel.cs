@@ -7,5 +7,6 @@ namespace HTTPMicroService.Models
 {
     public class CCRequestModel
     {
+        public string request { get; set; }
     }
 }

@@ -12,23 +12,39 @@ namespace HTTPMicroService.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public CCResponseModel Get()
+        public CCResponseModel Get(CCRequestModel request)
         {
-            return new Models.CCResponseModel();
+            return new Models.CCResponseModel(5, "Testing", 'y', true);
         }
 
-        //// GET api/values/5
+        ////// GET api/values/5
         //public CCResponseModel Get(CCRequestModel request)
         //{
-        //    return new CCResponseModel();
+        //    return new CCResponseModel(5,"Testing", 'y', true);
         //}
 
 
         // POST api/values
-        public void Post([FromBody]CCRequestModel request)
+        /// <summary>
+        /// Post a request to the service and generate a response
+        /// </summary>
+        /// <param name="request">A string containing the request</param>
+        /// <returns></returns>
+        public CCResponseModel Post([FromBody]CCRequestModel request)
         {
-            
-            var x = 1;
+            var response = new CCResponseModel();
+            try
+            {
+                response.text = request.request;
+                response.number = request.request.Length;
+                response.boolresult = ((request.request.Length % 2) == 1);
+                response.letter = request.request[0];
+            }
+            catch (Exception ex)
+            {
+                response.text = $"Error on response: {ex.Message}";
+            }
+            return response;
         }
 
         // DELETE api/values/5

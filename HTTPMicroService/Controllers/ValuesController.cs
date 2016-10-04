@@ -4,10 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using HTTPMicroService.Models;
 
 namespace HTTPMicroService.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
@@ -25,6 +26,8 @@ namespace HTTPMicroService.Controllers
         // POST api/values
         public void Post([FromBody]string value)
         {
+            var postedObject = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(value);
+            var x = 1;
         }
 
         // PUT api/values/5

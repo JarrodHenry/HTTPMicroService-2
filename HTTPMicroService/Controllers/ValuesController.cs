@@ -35,7 +35,10 @@ namespace HTTPMicroService.Controllers
             var response = new CCResponseModel();
             try
             {
-                response.text = request.request;
+                //response.text = request.request;
+                char[] charArray = request.request.ToCharArray();
+                Array.Reverse(charArray);
+                response.text = new string(charArray);
                 response.number = request.request.Length;
                 response.boolresult = ((request.request.Length % 2) == 1);
                 response.letter = request.request[0];
@@ -43,6 +46,9 @@ namespace HTTPMicroService.Controllers
             catch (Exception ex)
             {
                 response.text = $"Error on response: {ex.Message}";
+                response.number = 0;
+                response.boolresult = false;
+                response.letter = '_';
             }
             return response;
         }

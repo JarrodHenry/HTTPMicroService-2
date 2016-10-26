@@ -5,9 +5,9 @@ using System.Web;
 
 namespace HTTPMicroService.Models
 {
-    public class CCRequestModel
+    public class NameClass
     {
-        public int MsgId { get; set; }
-        public string MsgData { get; set; }
+        public string name { get; set; }
+
     }
 }
